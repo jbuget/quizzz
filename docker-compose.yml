@@ -1,0 +1,21 @@
+version: '3'
+services:
+  mongo:
+    image: mongo
+    command: --serviceExecutor adaptive
+    ports:
+      - 27017:27017
+    volumes:
+      - db-data:/data/db
+      - mongo-config:/data/configdb
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongo
+
+volumes:
+  db-data:
+  mongo-config:

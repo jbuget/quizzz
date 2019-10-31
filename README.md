@@ -32,38 +32,27 @@ We will try to keep this as up-to-date as possible, but community contributions 
 # Pre-reqs
 To build and run this app locally you will need a few things:
 - Install [Node.js](https://nodejs.org/en/)
-- Install [MongoDB](https://docs.mongodb.com/manual/installation/)
-- Install [VS Code](https://code.visualstudio.com/)
+- Install [Docker](https://docs.docker.com/install/)
+- Install [Docker Compose](https://docs.docker.com/compose/install/)
 
 # Getting started
 - Clone the repository
 ```
-git clone --depth=1 https://github.com/Microsoft/TypeScript-Node-Starter.git <project_name>
+git clone --depth=1 https://github.com/Microsoft/TypeScript-Node-Starter.git quizzz
 ```
 - Install dependencies
 ```
-cd <project_name>
+cd quizzz
 npm install
 ```
 - Configure your mongoDB server
 ```bash
-# create the db directory
-sudo mkdir -p /data/db
-# give the db correct read/write permissions
-sudo chmod 777 /data/db
-
-# starting from macOS 10.15 even the admin cannot create directory at root
-# so lets create the db diretory under the home directory.
-mkdir -p ~/data/db
-# user account has automatically read and write permissions for ~/data/db.
+docker-compose up -d
 ```
-- Start your mongoDB server (you'll probably want another command prompt)
-```bash
-mongod
 
-# on macOS 10.15 or above the db directory is under home directory
-mongod --dbpath ~/data/db
-```
+- Create quizzz database from mongo-express
+Access http://localhost:8081. Create a new database named `quizzz`.
+
 - Build and run the project
 ```
 npm run build
