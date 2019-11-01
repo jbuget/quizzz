@@ -4,5 +4,6 @@ class Answer {
 
     value: string;
     result: Result;
+    question: Question;
 }
 

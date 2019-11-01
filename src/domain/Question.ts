@@ -6,6 +6,5 @@ class Question extends DomainEntity {
     responseB: string;
     responseC: string;
     responseD: string;
-    solutionIndex: number;
-    solutionDescription: string;
+    solution: Solution;
 }

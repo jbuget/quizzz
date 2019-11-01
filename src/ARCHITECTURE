@@ -1,0 +1,11 @@
+src
+└ application
+    └ endpoints
+    └ handlers
+└ domain
+└ infrastructure
+    └ data
+        └ models
+        └ repositories
+    └ logging
+    └ mailing
