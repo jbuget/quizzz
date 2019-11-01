@@ -13,12 +13,16 @@ import { MONGODB_URI, SESSION_SECRET } from "./util/secrets";
 
 const MongoStore = mongo(session);
 
+// Routers
+import apiRouter from "./application/routers/api";
+import gamingRouter from "./application/routers/gaming";
+import publishingRouter from "./application/routers/publishing";
+
 // Controllers (route handlers)
 import * as homeController from "./controllers/home";
 import * as userController from "./controllers/user";
 import * as apiController from "./controllers/api";
 import * as contactController from "./controllers/contact";
-
 
 // API keys and Passport configuration
 import * as passportConfig from "./config/passport";
@@ -105,7 +109,11 @@ app.get("/account/unlink/:provider", passportConfig.isAuthenticated, userControl
 /**
  * API examples routes.
  */
-app.get("/api", apiController.getApi);
+app.use(apiRouter);
+app.use(gamingRouter);
+app.use(publishingRouter);
+
+/* Original example */
 app.get("/api/facebook", passportConfig.isAuthenticated, passportConfig.isAuthorized, apiController.getFacebook);
 
 /**
